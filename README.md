@@ -2,7 +2,7 @@
 Newsticker plugin for jquery.
 
 ##Demo
-[Demo Newsticker](http://cythilya.apphb.com/content/demo/jquery-newsticker/index.html)
+[Demo Newsticker](http://cythilya.github.io/jquery-newsticker)
 
 ##Setup
 ###HTML Snippet
