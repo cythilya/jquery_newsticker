@@ -4,12 +4,19 @@ $radius: 5px;
 $font-color: #402726;
 $font-family: verdana;
 $font-size: 13px;
+$top: 8px;
 $height: 30px;
 $interval: 10px;
 
+@mixin roundedBox($radious: 10px){
+	border-radius: $radious;
+	-webkit-border-radius: $radious;
+	-moz-border-radius: $radious;
+}
+
 .newsticker{
+	@include roundedBox;
 	background: $background-color;
-	border-radius: $radius;
 	color: $font-color;
 	cursor: default;
 	font-family: $font-family;
@@ -25,7 +32,7 @@ $interval: 10px;
 	}
 	.newsticker-list{
 		position: absolute;
-		top: ($height - $font-size*1.2)/2;
+		top: $top;
 		.newsticker-item{
 			height: $height;
 			overflow: hidden;

@@ -1,6 +1,8 @@
 .newsticker {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
   background: #e58e8a;
-  border-radius: 5px;
   color: #402726;
   cursor: default;
   font-family: verdana;
@@ -19,7 +21,7 @@
 
 .newsticker .newsticker-list {
   position: absolute;
-  top: 7.2px;
+  top: 8px;
 }
 
 .newsticker .newsticker-list .newsticker-item {
