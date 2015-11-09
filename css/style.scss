@@ -1,0 +1,35 @@
+$background-color: #e58e8a;
+$background-hover-color: #ff9e9a;
+$radius: 5px;
+$font-color: #402726;
+$font-family: verdana;
+$font-size: 13px;
+$height: 30px;
+$interval: 10px;
+
+.newsticker{
+	background: $background-color;
+	border-radius: $radius;
+	color: $font-color;
+	cursor: default;
+	font-family: $font-family;
+	font-weight: bold;
+	font-size: $font-size;
+	line-height: $font-size*1.2;
+	padding: 0 $interval 0 $interval;
+	height: $height;
+	position: relative;
+	overflow: hidden;
+	&:hover{
+		background: $background-hover-color;	
+	}
+	.newsticker-list{
+		position: absolute;
+		top: ($height - $font-size*1.2)/2;
+		.newsticker-item{
+			height: $height;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+	}
+}

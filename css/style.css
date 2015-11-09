@@ -1,0 +1,29 @@
+.newsticker {
+  background: #e58e8a;
+  border-radius: 5px;
+  color: #402726;
+  cursor: default;
+  font-family: verdana;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15.6px;
+  padding: 0 10px 0 10px;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsticker:hover {
+  background: #ff9e9a;
+}
+
+.newsticker .newsticker-list {
+  position: absolute;
+  top: 7.2px;
+}
+
+.newsticker .newsticker-list .newsticker-item {
+  height: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+}
