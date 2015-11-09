@@ -22,7 +22,7 @@
             
             dItem.eq(0).addClass('current');
             
-            var moveUp = setInterval(function(){
+            setInterval(function(){
                 if(!stop){
                     var dCurrent = dFrame.find('.current');
                     
@@ -38,7 +38,6 @@
             }, config.interval);
           
             dNewsticker.on('mouseover mouseout', function(e){
-                var dThisWrapper = $(this);
 				if(e.type == 'mouseover') {
 					stop = true;
 				} 
