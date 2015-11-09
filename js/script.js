@@ -1,8 +1,3 @@
-/*************************************************
- * Newsticker Scripts
- * @author      Summer Tang(cythilya@gmail.com)
- * @version     2015-11-09 09:07
- *************************************************/
 (function($) {
     $.fn.newsticker = function(opts) {
         // default configuration
