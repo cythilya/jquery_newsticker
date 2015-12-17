@@ -1,11 +1,21 @@
-#jQuery Newsticker Plugin
+# jQuery Newsticker Plugin
 Newsticker plugin for jquery.
 
-##Demo
+## Features
+- Lightweight
+- Easy to customize
+
+##Options
+- height
+- speed
+- start position
+- interval
+
+## Demo
 [Demo Newsticker](http://cythilya.github.io/jquery-newsticker)
 
-##Setup
-###HTML Snippet
+## Setup
+### HTML Snippet
 
 	<div class="newsticker">
 	    <ul class="newsticker-list">
@@ -21,20 +31,20 @@ Newsticker plugin for jquery.
 	    </ul>
 	</div>
 
-###JavaScript Snippet
+### JavaScript Snippet
 
 	// start
 	$(function() {
 		$('.newsticker').newsticker();
 	});
 
-##Requirements
+## Requirements
 - jQuery v. 1.8.2+  
 
-##Browsers
+## Browsers
 - Google Chrome
 - Mozilla Firefox
 - Microsoft Internet Explorer 8.0+
 
-##License
+## License
 Released under the [MIT license](http://opensource.org/licenses/MIT).
