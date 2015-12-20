@@ -9,38 +9,44 @@
         }, opts);
         // main function
         function init(obj) {
-            var dNewsticker = obj,
-                dFrame = dNewsticker.find('.newsticker-list'),
-                dItem = dFrame.find('.newsticker-item'),
-                dNext,
+            var $newsticker = obj,
+                $frame = $newsticker.find('.newsticker-list'),
+                $item = $frame.find('.newsticker-item'),
+                $next,
                 stop = false;
 
-            dItem.eq(0).addClass('current');
+            $newsticker.init = function(){
+                $newsticker.on('mouseover mouseout', function(e) {
+                    if (e.type == 'mouseover') {
+                        stop = true;
+                    } else { // mouseout
+                        stop = false;
+                    }
+                });
+                $item.eq(0).addClass('current');
+                $newsticker.move();
+            };
 
-            setInterval(function() {
-                if (!stop) {
-                    var dCurrent = dFrame.find('.current');
+            $newsticker.move = function(){
+                setInterval(function() {
+                    if (!stop) {
+                        var $current = $frame.find('.current');
 
-                    dFrame.animate({
-                        top: '-=' + config.height + 'px'
-                    }, config.speed, function() {
-                        dNext = dFrame.find('.current').next();
-                        dNext.addClass('current');
-                        dCurrent.removeClass('current');
-                        dCurrent.clone().appendTo(dFrame);
-                        dCurrent.remove();
-                        dFrame.css('top', config.start + 'px');
-                    });
-                }
-            }, config.interval);
+                        $frame.animate({
+                            top: '-=' + config.height + 'px'
+                        }, config.speed, function() {
+                            $next = $frame.find('.current').next();
+                            $next.addClass('current');
+                            $current.removeClass('current');
+                            $current.clone().appendTo($frame);
+                            $current.remove();
+                            $frame.css('top', config.start + 'px');
+                        });
+                    }
+                }, config.interval);
+            };
 
-            dNewsticker.on('mouseover mouseout', function(e) {
-                if (e.type == 'mouseover') {
-                    stop = true;
-                } else { // mouseout
-                    stop = false;
-                }
-            });
+            $newsticker.init();
         }
         // initialize every element
         this.each(function() {
