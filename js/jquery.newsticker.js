@@ -16,19 +16,13 @@
                 $next,
                 stop = false;
 
-            $newsticker.init = function(){
+            function init(){
                 $item.eq(0).addClass('current'); //set start item
-                $newsticker.suspend();
-
-                if($.isFunction(config.move)){
-                    config.move.call(this);
-                }
-                else{
-                    $newsticker.move();
-                }
+                suspend();
+                move();
             };
 
-            $newsticker.suspend = function(){
+            function suspend(){
                 $newsticker.on('mouseover mouseout', function(e) {
                     if (e.type == 'mouseover') {
                         stop = true;
@@ -38,26 +32,31 @@
                 }); 
             };
 
-            $newsticker.move = function(){
-                setInterval(function() {
-                    if (!stop) {
-                        var $current = $frame.find('.current');
+            function move(){
+                if($.isFunction(config.move)){
+                    config.move.call(this);
+                }
+                else{
+                    setInterval(function() {
+                        if (!stop) {
+                            var $current = $frame.find('.current');
 
-                        $frame.animate({
-                            top: '-=' + config.height + 'px'
-                        }, config.speed, function() {
-                            $next = $frame.find('.current').next();
-                            $next.addClass('current');
-                            $current.removeClass('current');
-                            $current.clone().appendTo($frame);
-                            $current.remove();
-                            $frame.css('top', config.start + 'px');
-                        });
-                    }
-                }, config.interval);
+                            $frame.animate({
+                                top: '-=' + config.height + 'px'
+                            }, config.speed, function() {
+                                $next = $frame.find('.current').next();
+                                $next.addClass('current');
+                                $current.removeClass('current');
+                                $current.clone().appendTo($frame);
+                                $current.remove();
+                                $frame.css('top', config.start + 'px');
+                            });
+                        }
+                    }, config.interval);
+                }
             };
 
-            $newsticker.init();
+            init();
         }
         // initialize every element
         this.each(function() {
