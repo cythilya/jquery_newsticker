@@ -37,7 +37,7 @@ Newsticker plugin for jquery.
 	});
 
 ## Requirements
-- jQuery v. 1.8.2+  
+- jQuery v.1.8.2+  
 
 ## Browsers
 - Google Chrome
