@@ -6,10 +6,11 @@ Newsticker plugin for jquery.
 - Easy to customize
 
 ##Options
-- height
-- speed
-- start position
-- interval
+- height: The height of this newsticker.
+- speed: Animation time in milliseconds.
+- start position: Start position of the text. 
+- interval: Time in milliseconds before next item is shown.
+- move: Custom function for animation.
 
 ## Setup
 ### HTML Snippet
