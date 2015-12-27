@@ -5,7 +5,8 @@
             height: 30,
             speed: 800,
             start: 8,
-            interval: 3000
+            interval: 3000,
+            move: null
         }, opts);
         // main function
         function init(obj) {
@@ -24,7 +25,13 @@
                     }
                 });
                 $item.eq(0).addClass('current');
-                $newsticker.move();
+
+                if($.isFunction(config.move)){
+                    config.move.call(this); //same as "config.move();"
+                }
+                else{
+                    $newsticker.move();
+                }
             };
 
             $newsticker.move = function(){
