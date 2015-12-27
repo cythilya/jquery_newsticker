@@ -17,21 +17,25 @@
                 stop = false;
 
             $newsticker.init = function(){
-                $newsticker.on('mouseover mouseout', function(e) {
-                    if (e.type == 'mouseover') {
-                        stop = true;
-                    } else { // mouseout
-                        stop = false;
-                    }
-                });
-                $item.eq(0).addClass('current');
+                $item.eq(0).addClass('current'); //set start item
+                $newsticker.suspend();
 
                 if($.isFunction(config.move)){
-                    config.move.call(this); //same as "config.move();"
+                    config.move.call(this);
                 }
                 else{
                     $newsticker.move();
                 }
+            };
+
+            $newsticker.suspend = function(){
+                $newsticker.on('mouseover mouseout', function(e) {
+                    if (e.type == 'mouseover') {
+                        stop = true;
+                    } else { //mouseout
+                        stop = false;
+                    }
+                }); 
             };
 
             $newsticker.move = function(){
