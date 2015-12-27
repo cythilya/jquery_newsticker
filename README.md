@@ -44,8 +44,5 @@ Newsticker plugin for jquery.
 - Mozilla Firefox
 - Microsoft Internet Explorer 8.0+
 
-## Demo
-[Demo Newsticker](http://cythilya.github.io/jquery-newsticker)
-
 ## License
 Released under the [MIT license](http://opensource.org/licenses/MIT).
