@@ -33,6 +33,8 @@ $interval: 10px;
 	.newsticker-list{
 		position: absolute;
 		top: $top;
+		height: $height;
+		overflow: hidden;
 		.newsticker-item{
 			height: $height;
 			overflow: hidden;

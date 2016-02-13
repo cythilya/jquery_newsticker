@@ -4,7 +4,6 @@
         var config = $.extend({}, {
             height: 30,
             speed: 800,
-            start: 8,
             interval: 3000,
             move: null
         }, opts);
@@ -14,9 +13,15 @@
                 $frame = $newsticker.find('.newsticker-list'),
                 $item = $frame.find('.newsticker-item'),
                 $next,
+                startPos = 0,
                 stop = false;
 
             function init(){
+                var customizedHeight = parseInt($item.eq(0).css('height').split('px')[0]),
+                    lineHeight = parseInt($newsticker.css('lineHeight').split('px')[0]);
+                $newsticker.css('height', config.height); //set customized height
+                startPos =  (config.height - lineHeight) / 2; //re-write start position;
+                $frame.css('top', startPos);
                 $item.eq(0).addClass('current'); //set start item
                 suspend();
                 move();
@@ -49,7 +54,7 @@
                                 $current.removeClass('current');
                                 $current.clone().appendTo($frame);
                                 $current.remove();
-                                $frame.css('top', config.start + 'px');
+                                $frame.css('top', startPos + 'px');
                             });
                         }
                     }, config.interval);
@@ -64,8 +69,4 @@
         });
         return this;
     };
-    // start
-    $(function() {
-        $('.newsticker').newsticker();
-    });
 })(jQuery);

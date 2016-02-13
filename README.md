@@ -9,7 +9,7 @@ Newsticker plugin for jQuery.
 - height: The height of this newsticker.
 - speed: Animation time in milliseconds.
 - interval: Time in milliseconds before next item is shown.
-- move: Custom function for animation.
+- move: Customed function for animation.
 
 ## Setup
 ### HTML Snippet

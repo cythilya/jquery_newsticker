@@ -22,6 +22,8 @@
 .newsticker .newsticker-list {
   position: absolute;
   top: 8px;
+  height: 30px;
+  overflow: hidden;
 }
 
 .newsticker .newsticker-list .newsticker-item {
