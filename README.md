@@ -1,5 +1,5 @@
 # jQuery Newsticker Plugin
-Newsticker plugin for jquery.
+Newsticker plugin for jQuery.
 
 ## Features
 - Lightweight
@@ -15,19 +15,21 @@ Newsticker plugin for jquery.
 ## Setup
 ### HTML Snippet
 
-	<div class="newsticker">
-	    <ul class="newsticker-list">
-	        <li class="newsticker-item">
-	        	That open was light...
-	        </li>
-	        <li class="newsticker-item">
-	        	That creature his bring waters female morning place Give bearing in isn't from...
-	        </li>
-	        <li class="newsticker-item">
-	        	And also. Firmament and Give....
-	        </li>
-	    </ul>
-	</div>
+```html
+<div class="newsticker">
+    <ul class="newsticker-list">
+        <li class="newsticker-item">
+        	That open was light...
+        </li>
+        <li class="newsticker-item">
+        	That creature his bring waters female morning place Give bearing in isn't from...
+        </li>
+        <li class="newsticker-item">
+        	And also. Firmament and Give....
+        </li>
+    </ul>
+</div>
+```
 
 ### JavaScript Snippet
 
