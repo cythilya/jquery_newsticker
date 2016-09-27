@@ -4,6 +4,7 @@ Newsticker plugin for jQuery.
 ## Features
 - Lightweight
 - Easy to customize
+- Use CSS mixin to define the prefix of this newsticker component 
 
 ##Options
 - height: The height of this newsticker.
@@ -15,32 +16,42 @@ Newsticker plugin for jQuery.
 ### HTML Snippet
 
 ```html
-<div class="newsticker">
-    <ul class="newsticker-list">
-        <li class="newsticker-item">
-        	That open was light...
-        </li>
-        <li class="newsticker-item">
-        	That creature his bring waters female morning place Give bearing in isn't from...
-        </li>
-        <li class="newsticker-item">
-        	And also. Firmament and Give....
-        </li>
-    </ul>
+<div class="ui-newsticker">
+  <ul class="ui-newsticker-list">
+    <li class="ui-newsticker-item">
+      That open was light...
+    </li>
+    <li class="ui-newsticker-item">
+      That creature his bring...
+    </li>
+    <li class="ui-newsticker-item">
+      And also. Firmament and Give....
+    </li>
+  </ul>
 </div>
 ```
+
+### CSS Snippet
+Include the css file. 
+
+	<link rel="stylesheet" href="css/jquery.newsticker.css">
+
+Or, use CSS mixin to define the prefix of this newsticker component. You can use any prefix string instead of "ui". "ui" is the default value.
+
+	@import "jquery.newsticker";
+	@include ui-newsticker-mixin(ui);
 
 ### JavaScript Snippet
 
 ```javascript
 // start
 $(function() {
-	$('.newsticker').newsticker();
+  $('.ui-newsticker').newsticker();
 });
 ```
 
 ## Requirements
-- jQuery v.1.8.2+  
+- jQuery v.1.8.2+
 
 ## Browsers
 - Google Chrome

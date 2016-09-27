@@ -1,4 +1,4 @@
-.newsticker {
+.ui-newsticker {
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -15,18 +15,18 @@
   overflow: hidden;
 }
 
-.newsticker:hover {
+.ui-newsticker:hover {
   background: #ff9e9a;
 }
 
-.newsticker .newsticker-list {
+.ui-newsticker-list {
   position: absolute;
   top: 8px;
   height: 30px;
   overflow: hidden;
 }
 
-.newsticker .newsticker-list .newsticker-item {
+.ui-newsticker-item {
   height: 30px;
   overflow: hidden;
   white-space: nowrap;

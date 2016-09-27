@@ -1,0 +1,35 @@
+.footer {
+  width: 270px;
+  margin: 0 auto;
+}
+
+.footer-list {
+  position: absolute;
+  bottom: 20px;
+}
+
+.footer-item {
+  float: left;
+}
+
+.footer-item:before {
+  content: "\00b7 ";
+}
+
+.footer-item:first-child:before {
+  content: "";
+}
+
+.footer-link {
+  color: #2879cc;
+  font-family: verdana;
+  font-size: 13px;
+  line-height: 1.2;
+  margin: 0 10px;
+}
+
+.footer-link:hover {
+  background: #7fbeff;
+  color: #fff;
+  text-decoration: none;
+}
