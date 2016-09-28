@@ -15,29 +15,40 @@
           startPos = 0,
           stop = false;
 
-      function init(){
-        var customizedHeight = parseInt($item.eq(0).css('height').split('px')[0]),
-            lineHeight = parseInt($newsticker.css('lineHeight').split('px')[0]);
+      //init settings
+      function init(ticker, height) {
+        var $ticker = $(ticker),
+            $frame = $ticker.find('.ui-newsticker-list'),
+            $firstItem = $frame.find('.ui-newsticker-item').eq(0),
+            lineHeight = parseInt($ticker.css('lineHeight').split('px')[0]) || 15;
 
-        $newsticker.css('height', config.height); //set customized height
-        startPos =  (config.height - lineHeight) / 2; //re-write start position;
-        $frame.css('top', startPos);
-        $item.eq(0).addClass('current'); //set start item
-        suspend();
-        move();
+        $ticker.css('height', height); //set customized height
+        startPos = calStartPos(height, lineHeight);
+        setStartPos($frame, startPos);
+        $firstItem.addClass('current'); //set start item
+        suspend(); //trigger mouse event for suspending newsticker
+        move(); //activate newsticker
       };
 
-      function suspend(){
+      //calculate start position
+      function calStartPos(height, lineHeight) {
+        return (height - lineHeight) / 2;
+      };
+
+      //set start position
+      function setStartPos(frame, pos) {
+        frame.css('top', pos);
+      };
+
+      //suspend newsticker
+      function suspend() {
         $newsticker.on('mouseover mouseout', function(e) {
-          if (e.type == 'mouseover') {
-            stop = true;
-          } else { //mouseout
-            stop = false;
-          }
+          e.type === 'mouseover' ? stop = true : stop = false;
         });
       };
 
-      function move(){
+      //activate newsticker
+      function move() {
         if($.isFunction(config.move)){
           config.move.call(this);
         } else {
@@ -60,7 +71,7 @@
         }
       };
 
-      init();
+      init($newsticker, config.height);
     }
 
     this.each(function() {
