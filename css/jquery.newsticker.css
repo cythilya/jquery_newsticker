@@ -2,7 +2,7 @@
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
-  background: #e58e8a;
+  background: #bbb;
   color: #402726;
   cursor: default;
   font-family: verdana;
@@ -16,7 +16,7 @@
 }
 
 .ui-newsticker:hover {
-  background: #ff9e9a;
+  background: #ddd;
 }
 
 .ui-newsticker-list {
