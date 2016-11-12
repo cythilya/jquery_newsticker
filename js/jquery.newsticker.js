@@ -1,55 +1,37 @@
 (function($) {
   $.fn.newsticker = function(opts) {
-    var config = $.extend({}, {
-        height: 30,
-        speed: 800,
-        interval: 3000,
-        move: null
-    }, opts);
+    var $newsticker = $(this),
+        $frame = $newsticker.find('.ui-newsticker-list'),
+        $item = $frame.find('.ui-newsticker-item'),
+        $next = {},
+        startPos = 0,
+        stop = false,
+        config = $.extend({}, {
+          height: 30,
+          speed: 800,
+          interval: 3000,
+          move: null
+        }, opts);
 
-    function init(obj) {
-      var $newsticker = obj,
-          $frame = $newsticker.find('.ui-newsticker-list'),
-          $item = $frame.find('.ui-newsticker-item'),
-          $next,
-          startPos = 0,
-          stop = false;
+    function Newsticker(config) {
+      this.config = config;
+      this.init($newsticker, config.height);
+    };
 
-      //init settings
-      function init(ticker, height) {
-        var $ticker = $(ticker),
-            $frame = $ticker.find('.ui-newsticker-list'),
-            $firstItem = $frame.find('.ui-newsticker-item').eq(0),
-            lineHeight = parseInt($ticker.css('lineHeight').split('px')[0]) || 15;
-
-        $ticker.css('height', height); //set customized height
-        startPos = calStartPos(height, lineHeight);
-        setStartPos($frame, startPos);
-        $firstItem.addClass('current'); //set start item
-        suspend(); //trigger mouse event for suspending newsticker
-        move(); //activate newsticker
-      };
-
-      //calculate start position
-      function calStartPos(height, lineHeight) {
+    Newsticker.prototype = {
+      calStartPos: function(height, lineHeight) { //calculate start position
         return (height - lineHeight) / 2;
-      };
-
-      //set start position
-      function setStartPos(frame, pos) {
+      },
+      setStartPos: function(frame, pos) { //set start position
         frame.css('top', pos);
-      };
-
-      //suspend newsticker
-      function suspend() {
+      },
+      suspend: function() { //suspend newsticker
         $newsticker.on('mouseover mouseout', function(e) {
           e.type === 'mouseover' ? stop = true : stop = false;
         });
-      };
-
-      //activate newsticker
-      function move() {
-        if($.isFunction(config.move)){
+      },
+      move: function() { //activate newsticker
+        if($.isFunction(config.move)) {
           config.move.call(this);
         } else {
           setInterval(function() {
@@ -69,14 +51,22 @@
             }
           }, config.interval);
         }
-      };
+      },
+      init: function(ticker, height) { //init settings
+        var $ticker = $(ticker),
+            $frame = $ticker.find('.ui-newsticker-list'),
+            $firstItem = $frame.find('.ui-newsticker-item').eq(0),
+            lineHeight = parseInt($ticker.css('lineHeight').split('px')[0]) || 15;
 
-      init($newsticker, config.height);
-    }
+        $ticker.css('height', height); //set customized height
+        startPos = this.calStartPos(height, lineHeight);
+        this.setStartPos($frame, startPos);
+        $firstItem.addClass('current'); //set start item
+        this.suspend(); //trigger mouse event for suspending newsticker
+        this.move(); //activate newsticker
+      }
+    };
 
-    this.each(function() {
-      init($(this));
-    });
-    return this;
+    return new Newsticker(config);
   };
 })(jQuery);
