@@ -4,7 +4,7 @@ Newsticker plugin for jQuery.
 ## Features
 - Lightweight
 - Easy to customize
-- Use CSS mixin to define the prefix of this newsticker component 
+- Use CSS mixin to define the prefix of this newsticker component
 
 ##Options
 - height: The height of this newsticker.
@@ -32,9 +32,9 @@ Newsticker plugin for jQuery.
 ```
 
 ### CSS Snippet
-Include the css file. 
+Include the css file.
 
-	<link rel="stylesheet" href="css/jquery.newsticker.css">
+	<link rel="stylesheet" href="css/jquery.newsticker.min.css">
 
 Or, use CSS mixin to define the prefix of this newsticker component. You can use any prefix string instead of "ui". "ui" is the default value.
 
