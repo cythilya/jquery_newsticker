@@ -41,11 +41,8 @@
               $frame.animate({
                 top: '-=' + config.height + 'px'
               }, config.speed, function() {
-                $next = $frame.find('.current').next();
-                $next.addClass('current');
-                $current.removeClass('current');
-                $current.clone().appendTo($frame);
-                $current.remove();
+                $next = $frame.find('.current').next().addClass('current');
+                $current.removeClass('current').clone().appendTo($frame).remove();
                 $frame.css('top', startPos + 'px');
               });
             }
