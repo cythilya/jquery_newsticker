@@ -6,7 +6,7 @@ Newsticker plugin for jQuery.
 - Easy to customize
 - Use CSS mixin to define the prefix of this newsticker component
 
-##Options
+## Options
 - height: The height of this newsticker.
 - speed: Animation time in milliseconds.
 - interval: Time in milliseconds before next item is shown.
