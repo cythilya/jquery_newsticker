@@ -1,11 +1,12 @@
 'use strict';
 
-var gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
-    sass = require('gulp-sass'),
-    cleanCss = require('gulp-clean-css'),
-    gutil = require('gulp-util'),
-    rename = require("gulp-rename");
+var gulp = require('gulp');
+var uglify = require('gulp-uglify');
+var sass = require('gulp-sass');
+var cleanCss = require('gulp-clean-css');
+var gutil = require('gulp-util');
+var rename = require('gulp-rename');
+var debug = require('gulp-debug');
 
 gulp.task('default', ['scripts', 'styles', 'watch']);
 
@@ -24,6 +25,9 @@ gulp.task('scripts', function() {
     ])
   .pipe(uglify().on('error', gutil.log))
   .pipe(rename('js/jquery.newsticker.min.js'))
+  .pipe(debug({
+    title: 'debug scripts:'
+  }))
   .pipe(gulp.dest('./'));
 });
 

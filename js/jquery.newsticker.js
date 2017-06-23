@@ -1,22 +1,22 @@
 (function($) {
   $.fn.newsticker = function(opts) {
     var $newsticker = $(this),
-        $frame = $newsticker.find('.ui-newsticker-list'),
-        $item = $frame.find('.ui-newsticker-item'),
-        $next = {},
-        startPos = 0,
-        stop = false,
-        config = $.extend({}, {
-          height: 30,
-          speed: 800,
-          interval: 3000,
-          move: null
-        }, opts);
+      $frame = $newsticker.find('.ui-newsticker-list'),
+      $item = $frame.find('.ui-newsticker-item'),
+      $next = {},
+      startPos = 0,
+      stop = false,
+      config = $.extend({}, {
+        height: 30,
+        speed: 800,
+        interval: 3000,
+        move: null
+      }, opts);
 
     function Newsticker(config) {
       this.config = config;
       this.init($newsticker, config.height);
-    };
+    }
 
     Newsticker.prototype = {
       calStartPos: function(height, lineHeight) { //calculate start position
@@ -27,11 +27,11 @@
       },
       suspend: function() { //suspend newsticker
         $newsticker.on('mouseover mouseout', function(e) {
-          e.type === 'mouseover' ? stop = true : stop = false;
+          stop = e.type === 'mouseover' ? true : false;
         });
       },
       move: function() { //activate newsticker
-        if($.isFunction(config.move)) {
+        if ($.isFunction(config.move)) {
           config.move.call(this);
         } else {
           setInterval(function() {
@@ -51,9 +51,9 @@
       },
       init: function(ticker, height) { //init settings
         var $ticker = $(ticker),
-            $frame = $ticker.find('.ui-newsticker-list'),
-            $firstItem = $frame.find('.ui-newsticker-item').eq(0),
-            lineHeight = parseInt($ticker.css('lineHeight').split('px')[0]) || 15;
+          $frame = $ticker.find('.ui-newsticker-list'),
+          $firstItem = $frame.find('.ui-newsticker-item').eq(0),
+          lineHeight = parseInt($ticker.css('lineHeight').split('px')[0]) || 15;
 
         $ticker.css('height', height); //set customized height
         startPos = this.calStartPos(height, lineHeight);
