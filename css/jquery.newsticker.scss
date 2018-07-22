@@ -22,6 +22,7 @@
     height: $height;
     position: relative;
     overflow: hidden;
+    will-change: transform;
     &:hover{
       background: $background-hover-color;
     }
