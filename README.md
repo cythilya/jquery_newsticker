@@ -34,12 +34,16 @@ Newsticker plugin for jQuery.
 ### CSS Snippet
 Include the css file.
 
-	<link rel="stylesheet" href="css/jquery.newsticker.min.css">
+```html
+<link rel="stylesheet" href="css/jquery.newsticker.min.css">
+```
 
 Or, use CSS mixin to define the prefix of this newsticker component. You can use any prefix string instead of "ui". "ui" is the default value.
 
-	@import "jquery.newsticker";
-	@include ui-newsticker-mixin(ui);
+```css
+@import "jquery.newsticker";
+@include ui-newsticker-mixin(ui);
+```
 
 ### JavaScript Snippet
 
@@ -54,7 +58,7 @@ $(function() {
 - jQuery v.1.8.2+
 
 ## Demo
-[Demo](http://cythilya.github.io/jquery-newsticker)
+[Demo](https://codepen.io/cythilya/full/qyRzPJ/)
 
 ## License
 Released under the [MIT license](http://opensource.org/licenses/MIT).
