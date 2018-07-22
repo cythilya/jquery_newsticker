@@ -27,26 +27,37 @@
       },
       suspend: function() { //suspend newsticker
         $newsticker.on('mouseover mouseout', function(e) {
-          stop = e.type === 'mouseover' ? true : false;
+          stop = e.type === 'mouseover';
         });
       },
       move: function() { //activate newsticker
         if ($.isFunction(config.move)) {
           config.move.call(this);
         } else {
-          setInterval(function() {
-            if (!stop) {
-              var $current = $frame.find('.current');
+          let start = null;
+
+          function tick(timestamp) {
+            let progress = timestamp - start;
+            if (start === null) { start = timestamp; }
+
+            if (progress < config.interval || stop) {
+              window.requestAnimationFrame(tick);
+            } else {
+              let $current = $frame.find('.current');
 
               $frame.animate({
                 top: '-=' + config.height + 'px'
-              }, config.speed, function() {
+              }, config.speed, () => {
                 $next = $frame.find('.current').next().addClass('current');
                 $current.removeClass('current').clone().appendTo($frame).remove();
                 $frame.css('top', startPos + 'px');
               });
+              start = timestamp;
+              window.requestAnimationFrame(tick);
             }
-          }, config.interval);
+          }
+
+          requestAnimationFrame(tick);
         }
       },
       init: function(ticker, height) { //init settings
