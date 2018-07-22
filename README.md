@@ -53,11 +53,6 @@ $(function() {
 ## Requirements
 - jQuery v.1.8.2+
 
-## Browsers
-- Google Chrome
-- Mozilla Firefox
-- Microsoft Internet Explorer 8.0+
-
 ## Demo
 [Demo](http://cythilya.github.io/jquery-newsticker)
 
