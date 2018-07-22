@@ -19,6 +19,7 @@
     }
 
     Newsticker.prototype = {
+      index: 0,
       calStartPos: function(height, lineHeight) { //calculate start position
         return (height - lineHeight) / 2;
       },
@@ -36,22 +37,27 @@
         } else {
           let start = null;
 
-          function tick(timestamp) {
+          const tick = (timestamp) => {
             let progress = timestamp - start;
             if (start === null) { start = timestamp; }
 
             if (progress < config.interval || stop) {
               window.requestAnimationFrame(tick);
             } else {
-              let $current = $frame.find('.current');
+              let targetHeight = 0;
 
-              $frame.animate({
-                top: '-=' + config.height + 'px'
-              }, config.speed, () => {
-                $next = $frame.find('.current').next().addClass('current');
-                $current.removeClass('current').clone().appendTo($frame).remove();
-                $frame.css('top', startPos + 'px');
+              if (this.index < $item.length - 1) {
+                this.index++;
+              } else {
+                this.index = 0;
+              }
+
+              targetHeight = config.height * this.index;
+
+              $frame.css({
+                'transform': `translateY(-${targetHeight}px)`,
               });
+
               start = timestamp;
               window.requestAnimationFrame(tick);
             }
@@ -69,7 +75,9 @@
         $ticker.css('height', height); //set customized height
         startPos = this.calStartPos(height, lineHeight);
         this.setStartPos($frame, startPos);
-        $firstItem.addClass('current'); //set start item
+        $frame.css({
+          'transition-duration': `${config.interval - 100}ms`,
+        });
         this.suspend(); //trigger mouse event for suspending newsticker
         this.move(); //activate newsticker
       }

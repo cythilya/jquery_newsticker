@@ -28,9 +28,9 @@
   }
   .#{$namespace}-newsticker-list{
     position: absolute;
-    top: $top;
-    height: $height;
     overflow: hidden;
+    transition-property: transform;
+    transition-timing-function: ease;
   }
   .#{$namespace}-newsticker-item {
     height: $height;
