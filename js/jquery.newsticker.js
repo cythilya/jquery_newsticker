@@ -1,17 +1,16 @@
-(function($) {
-  $.fn.newsticker = function(opts) {
-    var $newsticker = $(this),
-      $frame = $newsticker.find('.ui-newsticker-list'),
-      $item = $frame.find('.ui-newsticker-item'),
-      $next = {},
-      startPos = 0,
-      stop = false,
-      config = $.extend({}, {
-        height: 30,
-        speed: 800,
-        interval: 3000,
-        move: null
-      }, opts);
+(function ($) {
+  $.fn.newsticker = function (opts) {
+    const $newsticker = $(this);
+    const $frame = $newsticker.find('.ui-newsticker-list');
+    const $item = $frame.find('.ui-newsticker-item');
+    let startPos = 0;
+    let stop = false;
+    const config = $.extend({}, {
+      height: 30,
+      speed: 800,
+      interval: 3000,
+      move: null,
+    }, opts);
 
     function Newsticker(config) {
       this.config = config;
@@ -20,29 +19,29 @@
 
     Newsticker.prototype = {
       index: 0,
-      calStartPos: function(height, lineHeight) { //calculate start position
+      calStartPos: function (height, lineHeight) { // calculate start position
         return (height - lineHeight) / 2;
       },
-      setStartPos: function(frame, pos) { //set start position
+      setStartPos: function (frame, pos) { // set start position
         frame.css('top', pos);
       },
-      suspend: function() { //suspend newsticker
+      suspend: function () { // suspend newsticker
         $newsticker.on('mouseover mouseout', function(e) {
           stop = e.type === 'mouseover';
         });
       },
-      move: function() { //activate newsticker
+      move: function () { // activate newsticker
         if ($.isFunction(config.move)) {
           config.move.call(this);
         } else {
           let start = null;
 
           const tick = (timestamp) => {
-            let progress = timestamp - start;
+            const progress = timestamp - start;
             if (start === null) { start = timestamp; }
 
             if (progress < config.interval || stop) {
-              window.requestAnimationFrame(tick);
+              requestAnimationFrame(tick);
             } else {
               let targetHeight = 0;
 
@@ -55,32 +54,30 @@
               targetHeight = config.height * this.index;
 
               $frame.css({
-                'transform': `translateY(-${targetHeight}px)`,
+                transform: `translateY(-${targetHeight}px)`,
               });
 
               start = timestamp;
-              window.requestAnimationFrame(tick);
+              requestAnimationFrame(tick);
             }
-          }
+          };
 
           requestAnimationFrame(tick);
         }
       },
-      init: function(ticker, height) { //init settings
-        var $ticker = $(ticker),
-          $frame = $ticker.find('.ui-newsticker-list'),
-          $firstItem = $frame.find('.ui-newsticker-item').eq(0),
-          lineHeight = parseInt($ticker.css('lineHeight').split('px')[0]) || 15;
+      init: function (ticker, height) { // init settings
+        const $ticker = $(ticker);
+        const $frame = $ticker.find('.ui-newsticker-list');
+        const $firstItem = $frame.find('.ui-newsticker-item').eq(0);
+        const lineHeight = parseInt($ticker.css('lineHeight').split('px')[0]) || 15;
 
-        $ticker.css('height', height); //set customized height
+        $ticker.css('height', height); // set customized height
         startPos = this.calStartPos(height, lineHeight);
         this.setStartPos($frame, startPos);
-        $frame.css({
-          'transition-duration': `${config.interval - 100}ms`,
-        });
-        this.suspend(); //trigger mouse event for suspending newsticker
-        this.move(); //activate newsticker
-      }
+        $frame.css({ 'transition-duration': `${config.interval - 100}ms` });
+        this.suspend(); // trigger mouse event for suspending newsticker
+        this.move(); // sactivate newsticker
+      },
     };
 
     return new Newsticker(config);
